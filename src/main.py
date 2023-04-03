@@ -46,7 +46,7 @@ def setPosition():
         post_session.commit()
 
         # redireciona ao index apos add ao banco
-        return pos.pos_as_json()
+        return redirect('/')
     except Exception as err:
         print(str(err))
         # return jsonify({"message":"Error password or user not match"})
@@ -57,11 +57,12 @@ def getPosition():
     try:
         # Abre sessão e faz um query ao banco
         get_session = Session()
-        pos = get_session.query(Position).order_by(Position.id.desc())
+        pos = get_session.query(Position).order_by(Position.id.desc()).limit(1).one()
+        print (pos)
         # retorna a informação em json
-        return jsonify(pos.pos_as_json())
+        return pos.pos_as_json()
     except Exception as err:
         print(str(err))
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)
