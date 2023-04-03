@@ -10,6 +10,12 @@ class Position(Base):
     z = Column(Float)
     r = Column(Float)
 
+    def __init__(self, x, y, z, r):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.r = r
+
     def pos_as_json(self):
         return {
             "id": self.id,

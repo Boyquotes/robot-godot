@@ -49,7 +49,7 @@ def setPosition():
         return pos.pos_as_json()
     except Exception as err:
         print(str(err))
-        return jsonify({"message":"Error password or user not match"})
+        # return jsonify({"message":"Error password or user not match"})
 
 # get das informaççoes do db
 @app.get("/get_position")
@@ -57,7 +57,7 @@ def getPosition():
     try:
         # Abre sessão e faz um query ao banco
         get_session = Session()
-        pos = get_session.query(Position).order_by(Position.id.desc()).limit(1).one()
+        pos = get_session.query(Position).order_by(Position.id.desc())
         # retorna a informação em json
         return jsonify(pos.pos_as_json())
     except Exception as err:

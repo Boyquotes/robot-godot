@@ -87,7 +87,13 @@
     </div>
 
 	<h2>Coordenadas do robô</h2>
+	<h3>Atual</h3>
     {{positions[0]}}
+	<h3>Histórico</h3>
+	{% for position in positions %}
+	<p>{{position}}</p>
+	<br />
+	{% endfor %}
 
     <div id="form-pos">
       <h2>Adicionar Posição:</h2>
