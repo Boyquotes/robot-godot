@@ -49,7 +49,6 @@ def setPosition():
         return redirect('/')
     except Exception as err:
         print(str(err))
-        # return jsonify({"message":"Error password or user not match"})
 
 # get das informaççoes do db
 @app.get("/get_position")
